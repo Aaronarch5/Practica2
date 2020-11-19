@@ -1,0 +1,560 @@
+#include <iostream>
+#include <clocale>
+
+using namespace std;
+
+void operacionesDisponibles();
+//void introducirMatrizA(int**A, int filasA,int columnasA);
+//int imprimirMatrizA(int **A,int filasA,int columnasA);
+void sumaMatrices();
+void restaMatrices();
+void multiplicacionMatrices();
+void traspuesta();
+
+
+int main()
+{
+	setlocale(LC_ALL,"");
+	
+	int operacion{0};
+	
+	do
+	{
+	
+	operacionesDisponibles();
+	cout<<"Seleccione la operación que desea realizar: ";
+	cin>>operacion;
+	cout<<endl;
+	
+		switch(operacion)
+		{
+			case 1: 
+					sumaMatrices();
+					break;
+			case 2: 
+					restaMatrices();
+					break;
+			case 3:
+					multiplicacionMatrices();
+					break;
+			case 4:
+					traspuesta();
+					break;
+			case 5:
+					break;
+			
+		}
+		
+	} while(operacion!=5);
+ 	
+ 	
+ return 0;
+}
+
+void operacionesDisponibles()
+{
+	cout<<"CALCULADORA DE MATRICES"<<endl;
+	cout<<"BIENVENIDO..."<<endl;
+	cout<<" "<<endl;
+	cout<<"Listado de Operaciones de Matrices Disponibles:"<<endl;
+	cout<<"______________________________________"<<endl;
+	cout<<" "<<endl;
+	cout<<"1. SUMA (A+B) "<<endl;
+	cout<<"2. RESTA (A-B)"<<endl;
+	cout<<"3. MULTIPLICACIÓN (A*B)"<<endl;
+	cout<<"4. MATRIZ TRANSPUESTA "<<endl;
+	cout<<"5. SALIR DEL PROGRAMA "<<endl;
+	cout<<" "<<endl;
+}
+
+/*void introducirMatrizA(int**A, int filasA,int columnasA)
+{	
+	
+	cout<<" "<<filasA<<"Col"<<columnasA<<endl;
+    cout <<"Inserte los datos de la matriz:"<<endl;
+    for(size_t i{0}; i<filasA; i++)
+		{
+        for(size_t j{0}; j<columnasA; j++)
+			{
+            cout <<"Matriz["<<i<<"]["<<j<<"]: ";
+            
+            cin >>  A[i][j];
+        	}
+    	}	
+}
+*/
+
+
+void sumaMatrices()
+{
+	
+	int filasA{0}, columnasA{0};
+	int filasB{0}, columnasB{0};
+	
+	
+	
+	cout<<" "<<endl;
+	cout<<"----------------------SUMA DE MATRICES-----------------------"<<endl;
+	cout<<" "<<endl;
+	cout<<"|||| ¡NOTA!: Las Matrices deben ser del mismo tamaño ||||"<<endl;
+	cout<<"_____________________________________________________________"<<endl;
+	
+
+	//Indicar filas y columnas de cada matriz
+	cout<<" "<<endl;
+	cout<<"* Inserte número de filas para la matriz A: "<<endl;
+	cin>>filasA;
+	cout<<"* Inserte número de columnas para la matriz A: "<<endl;
+	cin>>columnasA;
+
+	cout<<" "<<endl;
+	cout<<"* Inserte número de filas para la matriz B: "<<endl;
+	cin>>filasB;
+	cout<<"* Inserte número de columnas para la matriz B: "<<endl;
+	cin>>columnasB;
+	
+	
+	if(filasA==filasB&columnasA==columnasB)
+	{
+		//Insertar Valores de la Matriz A
+		cout<<" "<<endl;
+    	cout <<"DATOS PARA LA MATRIZ A: "<<endl;
+		int A[filasA][columnasA];
+		for(size_t i{0}; i<filasA; i++)
+			{
+        	for(size_t j{0}; j<columnasA; j++)
+				{
+            	cout <<"Matriz["<<i<<"]["<<j<<"]: ";
+            	cin >> A[i][j];
+        		}
+    		}
+    
+
+		//Insertar Valores de la Matriz B
+		cout<<" "<<endl;
+    	cout <<"DATOS PARA LA MATRIZ B: "<<endl;
+		int B[filasB][columnasB];
+	
+		for(size_t i{0}; i<filasB; i++)
+			{
+        	for(size_t j{0}; j<columnasB; j++)
+				{
+            	cout <<"Matriz["<<i<<"]["<<j<<"]: ";
+           		cin >> B[i][j];
+        		}
+    		}
+    	
+    	//Suma en la Matriz C
+    	int filasC=filasA;
+		int columnasC=columnasA;
+    	int C[filasC][columnasC];
+    	for(size_t i{0};i<filasC;i++)
+			{
+        	for(size_t j{0}; j<columnasC;j++)
+            	{
+            		C[i][j] = A[i][j] + B[i][j];	
+				}
+			}
+    	
+    	
+    	//Imprime Matriz A
+    	cout<<"____________________________________"<<endl;
+    	cout<<" "<<endl;
+    	cout<<"MATRIZ A"<<endl;
+    	cout<<" "<<endl;
+    	for(size_t i{0};i<filasA;i++)
+		{
+    	cout <<" | ";
+    	for(size_t j{0}; j<columnasA; j++)
+        	{
+				cout<<A[i][j]<<" ";
+ 			}
+        	cout << "|"<<endl;
+    	}
+    	cout<<" "<<endl;
+    	
+    	
+    	//Imprime Matriz B
+    	cout<<"MATRIZ B"<<endl;
+    	cout<<" "<<endl;
+    	for(size_t i{0};i<filasB;i++)
+		{
+    	cout <<" | ";
+    	for(size_t j{0}; j<columnasB; j++)
+        	{
+				cout<<B[i][j]<<" ";
+ 			}
+        	cout << "|"<<endl;
+    	}
+    	cout<<" "<<endl;
+    	
+    	
+			
+		//Imprime Matriz C
+    	cout<<"MATRIZ C = A+B"<<endl;
+    	cout<<" "<<endl;
+    	
+		for(size_t i{0};i<filasC;i++)
+		{
+    	cout <<" | ";
+    	for(size_t j{0}; j<columnasC; j++)
+        	{
+				cout<<C[i][j]<<" ";
+ 			}
+        	cout << "|"<<endl;
+    	}
+    	cout<<" "<<endl;
+    	
+    	
+	}
+		else 
+			{
+				cout<<" "<<endl;
+				cout<<"                       ¡¡¡¡¡AVISO!!!!!"<<endl;
+				cout<<"_____________________________________________________________"<<endl;
+					cout<<" "<<endl;
+				cout<<"               NO SE PUEDE REALIZAR LA OPERACIÓN"<<endl;
+				cout<<" "<<endl;
+				cout<<"                 NO TIENEN LA MISMA DIMENSIÓN"<<endl;
+				cout<<"_____________________________________________________________"<<endl;
+				cout<<" "<<endl;
+			}
+}
+
+
+
+void restaMatrices()
+{
+	
+	int filasA{0}, columnasA{0};
+	int filasB{0}, columnasB{0};
+	
+	
+	
+	cout<<" "<<endl;
+	cout<<"----------------------RESTA DE MATRICES-----------------------"<<endl;
+	cout<<" "<<endl;
+	cout<<"|||| ¡NOTA!: Las Matrices deben ser del mismo tamaño ||||"<<endl;
+	cout<<"_____________________________________________________________"<<endl;
+	
+
+	//Indicar filas y columnas de cada matriz
+	cout<<" "<<endl;
+	cout<<"* Inserte número de filas para la matriz A: "<<endl;
+	cin>>filasA;
+	cout<<"* Inserte número de columnas para la matriz A: "<<endl;
+	cin>>columnasA;
+
+	cout<<" "<<endl;
+	cout<<"* Inserte número de filas para la matriz B: "<<endl;
+	cin>>filasB;
+	cout<<"* Inserte número de columnas para la matriz B: "<<endl;
+	cin>>columnasB;
+	
+	
+	if(filasA==filasB&columnasA==columnasB)
+	{
+		//Insertar Valores de la Matriz A
+		cout<<" "<<endl;
+    	cout <<"DATOS PARA LA MATRIZ A: "<<endl;
+		int A[filasA][columnasA];
+		for(size_t i{0}; i<filasA; i++)
+			{
+        	for(size_t j{0}; j<columnasA; j++)
+				{
+            	cout <<"Matriz["<<i<<"]["<<j<<"]: ";
+            	cin >> A[i][j];
+        		}
+    		}
+    
+
+		//Insertar Valores de la Matriz B
+		cout<<" "<<endl;
+    	cout <<"DATOS PARA LA MATRIZ B: "<<endl;
+		int B[filasB][columnasB];
+	
+		for(size_t i{0}; i<filasB; i++)
+			{
+        	for(size_t j{0}; j<columnasB; j++)
+				{
+            	cout <<"Matriz["<<i<<"]["<<j<<"]: ";
+           		cin >> B[i][j];
+        		}
+    		}
+    	
+    	//Suma en la Matriz C
+    	int filasC=filasA;
+		int columnasC=columnasA;
+    	int C[filasC][columnasC];
+    	for(size_t i{0};i<filasC;i++)
+			{
+        	for(size_t j{0}; j<columnasC;j++)
+            	{
+            		C[i][j] = A[i][j] - B[i][j];	
+				}
+			}
+    	
+    	
+    	//Imprime Matriz A
+    	cout<<"____________________________________"<<endl;
+    	cout<<" "<<endl;
+    	cout<<"MATRIZ A"<<endl;
+    	cout<<" "<<endl;
+    	for(size_t i{0};i<filasA;i++)
+		{
+    	cout <<" | ";
+    	for(size_t j{0}; j<columnasA; j++)
+        	{
+				cout<<A[i][j]<<" ";
+ 			}
+        	cout << "|"<<endl;
+    	}
+    	cout<<" "<<endl;
+    	
+    	
+    	//Imprime Matriz B
+    	cout<<"MATRIZ B"<<endl;
+    	cout<<" "<<endl;
+    	for(size_t i{0};i<filasB;i++)
+		{
+    	cout <<" | ";
+    	for(size_t j{0}; j<columnasB; j++)
+        	{
+				cout<<B[i][j]<<" ";
+ 			}
+        	cout << "|"<<endl;
+    	}
+    	cout<<" "<<endl;
+    	
+    	
+			
+		//Imprime Matriz C
+    	cout<<"MATRIZ C = A-B"<<endl;
+    	cout<<" "<<endl;
+    	
+		for(size_t i{0};i<filasC;i++)
+		{
+    	cout <<" | ";
+    	for(size_t j{0}; j<columnasC; j++)
+        	{
+				cout<<C[i][j]<<" ";
+ 			}
+        	cout << "|"<<endl;
+    	}
+    	cout<<" "<<endl;
+    	
+    	
+	}
+		else 
+			{
+				cout<<" "<<endl;
+				cout<<"                       ¡¡¡¡¡AVISO!!!!!"<<endl;
+				cout<<"_____________________________________________________________"<<endl;
+					cout<<" "<<endl;
+				cout<<"               NO SE PUEDE REALIZAR LA OPERACIÓN"<<endl;
+				cout<<" "<<endl;
+				cout<<"                 NO TIENEN LA MISMA DIMENSIÓN"<<endl;
+				cout<<"_____________________________________________________________"<<endl;
+				cout<<" "<<endl;
+			}
+}
+
+
+void multiplicacionMatrices()
+{
+	int filasA{0}, columnasA{0};
+	int filasB{0}, columnasB{0};
+	
+	cout<<" "<<endl;
+	cout<<"----------------------MULTIPLICACIÓN DE MATRICES-----------------------"<<endl;
+	cout<<" "<<endl;
+	cout<<"|||| ¡NOTA!: EL NUMERO DE COLUMNAS DE A  ||||"<<endl;
+	cout <<"|||| DEBE SER EL MISMO NUMERO DE FILAS DE B  ||||"<<endl;
+	cout<<"_____________________________________________________________"<<endl;	
+	
+	
+	//Indicar filas y columnas de cada matriz
+	cout<<" "<<endl;
+	cout<<"* Inserte número de filas para la matriz A: "<<endl;
+	cin>>filasA;
+	cout<<"* Inserte número de columnas para la matriz A: "<<endl;
+	cin>>columnasA;
+
+	cout<<" "<<endl;
+    	cout <<"DATOS PARA LA MATRIZ A: "<<endl;
+		int A[filasA][columnasA];
+		for(size_t i{0}; i<filasA; i++)
+			{
+        	for(size_t j{0}; j<columnasA; j++)
+				{
+            	cout <<"Matriz["<<i<<"]["<<j<<"]: ";
+            	cin >> A[i][j];
+        		}
+    		}
+    		
+    		
+
+	cout<<" "<<endl;
+	cout<<"* Inserte número de filas para la matriz B: "<<endl;
+	cin>>filasB;
+	cout<<"* Inserte número de columnas para la matriz B: "<<endl;
+	cin>>columnasB;
+	
+	cout<<" "<<endl;
+    	cout <<"DATOS PARA LA MATRIZ B: "<<endl;
+		int B[filasB][columnasB];
+	
+		for(size_t i{0}; i<filasB; i++)
+			{
+        	for(size_t j{0}; j<columnasB; j++)
+				{
+            	cout <<"Matriz["<<i<<"]["<<j<<"]: ";
+           		cin >> B[i][j];
+        		}
+    		}
+    		
+    	
+    	//Imprime Matriz A
+    	cout<<"____________________________________"<<endl;
+    	cout<<" "<<endl;
+    	cout<<"MATRIZ A"<<endl;
+    	cout<<" "<<endl;
+    	for(size_t i{0};i<filasA;i++)
+		{
+    	cout <<" | ";
+    	for(size_t j{0}; j<columnasA; j++)
+        	{
+				cout<<A[i][j]<<" ";
+ 			}
+        	cout << "|"<<endl;
+    	}
+    	cout<<" "<<endl;
+    	
+    	
+    	//Imprime Matriz B
+    	cout<<"MATRIZ B"<<endl;
+    	cout<<" "<<endl;
+    	for(size_t i{0};i<filasB;i++)
+		{
+    	cout <<" | ";
+    	for(size_t j{0}; j<columnasB; j++)
+        	{
+				cout<<B[i][j]<<" ";
+ 			}
+        	cout << "|"<<endl;
+    	}
+    	cout<<" "<<endl;
+		
+	//Declaración Matriz C
+    int filasC=filasA;
+	int columnasC=columnasA;
+    int C[filasC][columnasC];
+    		
+			
+			
+	//Multiplicación de las Matrices		
+	if(columnasA == filasB)
+	{
+        for(int i{0};i<filasA;i++)
+		{
+            for(int j{0};j<columnasB;j++)
+			{
+                C[i][j] = 0;
+                for( int k = 0; k < columnasA;k++)
+                {
+                    C[i][j] += A[i][k] * B[k][j];
+                }
+            }
+        }
+	
+	
+	 //Imprime Matriz C
+	 	cout<<" "<<endl;
+		cout << "C = A*B:";
+    	cout<<" "<<endl;
+    	
+		for(size_t i{0};i<filasC;i++)
+		{
+    	cout <<" | ";
+    	for(size_t j{0}; j<columnasC; j++)
+        	{
+				cout<<C[i][j]<<" ";
+ 			}
+        	cout << "|"<<endl;
+    	}
+    	cout<<" "<<endl;
+	}
+	else
+		{
+			cout<<" "<<endl;
+				cout<<"                       ¡¡¡¡¡AVISO!!!!!"<<endl;
+				cout<<"_____________________________________________________________"<<endl;
+					cout<<" "<<endl;
+				cout<<"               NO SE PUEDE REALIZAR LA OPERACIÓN"<<endl;
+				cout<<" "<<endl;
+				cout<<"               EL NÚMERO DE COLUMNAS DE LA MATRIZ A"<<endl;
+				cout<<"               NO ES EL MISMO NÚMERO DE FILAS DE LA MATRIZ B"<<endl;
+				cout<<"_____________________________________________________________"<<endl;
+				cout<<" "<<endl;
+		}
+}
+
+void traspuesta()
+{
+	int filas{0}, columnas{0};
+	
+	//Indicar filas y columnas de la matriz
+	cout<<" "<<endl;
+	cout<<"* Inserte número de filas para la matriz: "<<endl;
+	cin>>filas;
+	cout<<"* Inserte número de columnas para la matriz: "<<endl;
+	cin>>columnas;
+	
+		cout<<" "<<endl;
+    	cout <<"DATOS PARA LA MATRIZ: "<<endl;
+		int M[filas][columnas];
+	
+		for(size_t i{0}; i<filas; i++)
+			{
+        	for(size_t j{0}; j<columnas; j++)
+				{
+            	cout <<"Matriz["<<i<<"]["<<j<<"]: ";
+           		cin >> M[i][j];
+        		}
+    		}
+    		
+    		
+    //Imprime Matriz Original
+	 	cout<<" "<<endl;
+		cout << "Matriz Original";
+    	cout<<" "<<endl;
+    	
+		for(size_t i{0};i<filas;i++)
+		{
+    	cout <<" | ";
+    	for(size_t j{0}; j<columnas; j++)
+        	{
+				cout<<M[i][j]<<" ";
+ 			}
+        	cout << "|"<<endl;
+    	}
+    	cout<<" "<<endl;
+    	
+    
+    //Imprime Matriz Traspuesta
+	 	cout<<" "<<endl;
+		cout << "Matriz Traspuesta";
+    	cout<<" "<<endl;
+    	
+		for(size_t i{0};i<filas;i++)
+		{
+    	cout <<" | ";
+    	for(size_t j{0}; j<columnas; j++)
+        	{
+				cout<<M[j][i]<<" ";
+ 			}
+        	cout << "|"<<endl;
+    	}
+    	cout<<" "<<endl;
+    		
+}
